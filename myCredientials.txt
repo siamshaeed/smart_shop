@@ -1,0 +1,3 @@
+Super Admin
+admin@admin.com
+password : password
