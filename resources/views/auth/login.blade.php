@@ -43,7 +43,7 @@
 
                                 <div class="form-group">
                                     <label for="userpassword">Password</label>
-                                    <input type="password" name="password" class="form-control" id="userpassword" placeholder="Enter password">
+                                    <input type="password" name="password" class="form-control" id="userpassword" placeholder="Enter Password">
                                 </div>
 
                                 <div class="custom-control custom-checkbox">
