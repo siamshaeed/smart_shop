@@ -4,8 +4,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
-
-Route::get('/', [LoginController::class, 'index']);     // login page
+//login page
+Route::get('/', [LoginController::class, 'index']);
 
 //Dashboard
 Route::get('/dashboard', [
