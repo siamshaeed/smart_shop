@@ -32,7 +32,7 @@
                         <span>Product Setting</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="ecommerce-products.html">Manage Category</a></li>
+                        <li><a href="{{route('category.index')}}">Manage Category</a></li>
                         <li><a href="ecommerce-product-detail.html">Manage Sub Category</a></li>
                         <li><a href="ecommerce-orders.html">Manage Brand</a></li>
                         <li><a href="ecommerce-orders.html">Manage Color</a></li>

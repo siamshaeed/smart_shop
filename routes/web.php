@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -13,3 +14,12 @@ Route::get('/dashboard', [
     'as'         => 'dashboard',
     'middleware' => ['auth:sanctum', 'verified']
 ]);
+
+// Category
+// Route::get('/manage-category', [
+//     'uses'       => 'App\Http\Controllers\CategoryController@index',
+//     'as'         => 'manage-category',
+//     'middleware' => ['auth:sanctum', 'verified']
+// ]);
+
+Route::resource('/category', App\Http\Controllers\CategoryController::class);
