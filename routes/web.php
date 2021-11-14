@@ -15,11 +15,5 @@ Route::get('/dashboard', [
     'middleware' => ['auth:sanctum', 'verified']
 ]);
 
-// Category
-// Route::get('/manage-category', [
-//     'uses'       => 'App\Http\Controllers\CategoryController@index',
-//     'as'         => 'manage-category',
-//     'middleware' => ['auth:sanctum', 'verified']
-// ]);
 
 Route::resource('/category', App\Http\Controllers\CategoryController::class);
