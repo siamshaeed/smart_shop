@@ -10,7 +10,6 @@ class LoginController extends Controller
 {
     public function index()
     {
-        // if (Auth::user()->id) {
         if (Auth::check()) {
             return redirect('/dashboard');
         }

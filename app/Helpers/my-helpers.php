@@ -1,6 +1,8 @@
 <?php
 
-function hellow()
+function imageUpload($image, $directory)
 {
-    echo "HHH";
+    $name = $image->getClientOriginalName();
+    $image->move($directory, $name);
+    return $directory . $name;
 }

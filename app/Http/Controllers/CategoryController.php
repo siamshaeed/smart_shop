@@ -39,6 +39,11 @@ class CategoryController extends Controller
         return redirect()->back()->with('message', 'Category Create Successfully');
     }
 
+    public function updateStatus($id)
+    {
+        return redirect()->back()->with('message', Category::updateCategoryStatus($id));
+    }
+
     /**
      * Display the specified resource.
      *

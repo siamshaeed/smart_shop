@@ -14,6 +14,11 @@ Route::get('/dashboard', [
     'as'         => 'dashboard',
     'middleware' => ['auth:sanctum', 'verified']
 ]);
-
+// update categoty status
+Route::get('/update-category-status/{id}', [
+    'uses'       => 'App\Http\Controllers\CategoryController@updateStatus',
+    'as'         => 'category.update-status',
+    'middleware' => ['auth:sanctum', 'verified']
+]);
 
 Route::resource('/category', App\Http\Controllers\CategoryController::class);
