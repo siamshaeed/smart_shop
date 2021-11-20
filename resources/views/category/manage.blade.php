@@ -87,6 +87,7 @@
               </tr>
             </thead>
             <tbody>
+              {{-- show category info --}}
               @foreach ($categories as $categorie)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
@@ -95,10 +96,14 @@
                   <td><img src="{{ asset($categorie->image) }}" alt="" height="40" width="60"></td>
                   <td>{{ $categorie->status == 1 ? 'Published' : 'Unpublished' }}</td>
                   <td class="text-right">
+                    {{-- category status --}}
                     <a href="{{ route('category.update-status', ['id' => $categorie->id]) }}"
                       class="btn btn-sm {{ $categorie->status == 1 ? 'btn-info' : 'btn-warning' }}"><i
                         class="fas fa-arrow-circle-up"></i></a>
-                    <a href="#" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
+                    {{-- category edit --}}
+                    <a href="{{ route('category.edit', $categorie->id) }}" class="btn btn-success btn-sm"><i
+                        class="fas fa-edit"></i></a>
+                    {{-- category delete --}}
                     <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                   </td>
                 </tr>
