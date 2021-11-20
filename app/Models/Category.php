@@ -12,15 +12,33 @@ class Category extends Model
     public static $category;
     public static $directory;
     public static $message;
+    public static $image;
+    public static $imagURL;
+
+    public static function getImageURL($request, $category = null)
+    {
+        if (self::$image = $request->file('image')) {
+            if ($category) {
+                if (file_exists($category->image)) {
+                    if ($category->image != 'dummy.png') {
+                        unlink($category->image);
+                    }
+                }
+            }
+            self::$imagURL = imageUpload(self::$image, 'category-image/');
+        } else {
+            if ($category) {
+                self::$imagURL = self::$category->image;
+            } else {
+                self::$imagURL = 'dummy.png';
+            }
+        }
+        return self::$imagURL;
+    }
 
     public static function newCategory($request)
     {
-        self::$category = new Category();
-        self::$category->name        = $request->name;
-        self::$category->description = $request->description;
-        self::$category->image       = imageUpload($request->file('image'), 'category-image/');
-        self::$category->status      = $request->status;
-        self::$category->save();
+        self::saveBasicInfo(new Category(), $request, self::getImageURL($request));
     }
 
     public static function updateCategoryStatus($id)
@@ -34,5 +52,20 @@ class Category extends Model
             self::$message = 'Category info published successfully';
         }
         self::$category->save();
+    }
+
+    public static function updateCategory($request, $id)
+    {
+        self::$category = Category::find($id);
+        self::saveBasicInfo(self::$category, $request, self::getImageURL($request, self::$category));
+    }
+
+    public static function saveBasicInfo($category, $request, $imagURL)
+    {
+        $category->name        = $request->name;
+        $category->description = $request->description;
+        $category->image       = $imagURL;
+        $category->status      = $request->status;
+        $category->save();
     }
 }
