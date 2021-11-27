@@ -12,6 +12,8 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public $category;
+
     public function index()
     {
         return view('category.manage', ['categories' => Category::all()]);
@@ -87,6 +89,13 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->category = Category::find($id);
+        if (file_exists($this->category->image)) {
+            if ($this->category != 'dummy.png') {
+                unlink($this->category->image);
+            }
+        }
+        $this->category->delete();
+        return redirect('category')->with('message', 'Category info Delete Successfully');
     }
 }
