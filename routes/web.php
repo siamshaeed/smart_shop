@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Route;
 
 //login page
 Route::get('/', [LoginController::class, 'index']);
-Route::get('/dashboard', [          //Dashboard
+//Dashboard
+Route::get('/dashboard', [
     'uses'       => 'App\Http\Controllers\DashboardController@index',
     'as'         => 'dashboard',
     'middleware' => ['auth:sanctum', 'verified']
