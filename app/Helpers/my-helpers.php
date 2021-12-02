@@ -1,5 +1,5 @@
 <?php
-
+//image upload
 function imageUpload($image, $directory)
 {
     $name = $image->getClientOriginalName();

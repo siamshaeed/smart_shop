@@ -106,7 +106,8 @@
                                         <a href="{{ route('category.edit', $categorie->id) }}"
                                             class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
                                         {{-- category delete --}}
-                                        <a href="" class="btn btn-danger btn-sm" onclick="event.preventDefault(); document.getElementById('categoryForm{{ $categorie->id }}').submit();">
+                                        <a href="" class="btn btn-danger btn-sm"
+                                            onclick="event.preventDefault(); document.getElementById('categoryForm{{ $categorie->id }}').submit();">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                         <form method="POST" action="{{ route('category.destroy', $categorie->id) }}"
