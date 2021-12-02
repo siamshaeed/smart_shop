@@ -15,10 +15,10 @@ Route::get('/dashboard', [
     'middleware' => ['auth:sanctum', 'verified']
 ]);
 
-// category resource controller
+// category - resource controller
 Route::resource('/category', App\Http\Controllers\CategoryController::class);
 
-// update categoty status
+// categoty status - publishe or unpublish
 Route::get('/update-category-status/{id}', [
     'uses'       => 'App\Http\Controllers\CategoryController@updateStatus',
     'as'         => 'category.update-status',
