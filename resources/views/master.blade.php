@@ -18,8 +18,8 @@
         @endif
         <!-- Begin page -->
         <div id="layout-wrapper">
-            <div class="main-content">
-                <div class="page-content">
+            <div class="main-content main-contentSiam">
+                <div class="page-content siamPaddingRemove">
                     <div class="container-fluid">
                         @yield('body')
                     </div>
