@@ -21,10 +21,10 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title mb-4">Create New Sub Category</h4>
-                    <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('sub-category.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row mb-4">
-                            <label for="horizontal-firstname-input" class="col-sm-2 col-form-label">Category name</label>
+                            <label class="col-sm-2 col-form-label">Category name</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="category_id">
                                     <option value="" disabled selected >--- Select Category ---</option>
@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div class="form-group row mb-4">
-                            <label for="horizontal-firstname-input1" class="col-sm-2 col-form-label">Category
+                            <label for="horizontal-firstname-input1" class="col-sm-2 col-form-label">Sub Category
                                 Description</label>
                             <div class="col-sm-10">
                                 <textarea class="form-control" name="description"
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <div class="form-group row mb-4">
-                            <label for="horizontal-email-input2" class="col-sm-2 col-form-label">Category Image</label>
+                            <label for="horizontal-email-input2" class="col-sm-2 col-form-label">Sub Category Image</label>
                             <div class="col-sm-10">
                                 <input type="file" class="form-control-file" name="image" id="horizontal-email-input2">
                             </div>
@@ -71,7 +71,7 @@
                         <div class="form-group row justify-content-end">
                             <div class="col-sm-10">
                                 <div>
-                                    <button type="submit" class="btn btn-primary w-md">Create New Category</button>
+                                    <button type="submit" class="btn btn-primary w-md">Create New Sub Category</button>
                                 </div>
                             </div>
                         </div>
