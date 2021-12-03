@@ -102,29 +102,29 @@
                         </thead>
                         <tbody>
                             {{-- show category info --}}
-                            @foreach ($sub_categries as $sub_categry)
+                            @foreach ($sub_categries as $sub_category)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $sub_categry->category_id }}</td>
+                                    <td>{{ $sub_category->category->name }}</td>
                                     <td>{{ $sub_category->name }}</td>
                                     <td>{{ $sub_category->description }}</td>
                                     <td><img src="{{ asset($sub_category->image) }}" alt="" height="40" width="60"></td>
                                     <td>{{ $sub_category->status == 1 ? 'Published' : 'Unpublished' }}</td>
                                     <td class="text-right">
                                         {{-- category status --}}
-                                        <a href="{{ route('category.update-status', ['id' => $sub_category->id]) }}"
+                                        <a href="{{ route('sub-category.update-status', ['id' => $sub_category->id]) }}"
                                             class="btn btn-sm {{ $sub_category->status == 1 ? 'btn-info' : 'btn-warning' }}"><i
                                                 class="fas fa-arrow-circle-up"></i></a>
                                         {{-- category edit --}}
-                                        <a href="{{ route('category.edit', $sub_category->id) }}"
+                                        <a href="{{ route('sub-category.edit', $sub_category->id) }}"
                                             class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
                                         {{-- category delete --}}
                                         <a href="" class="btn btn-danger btn-sm"
-                                            onclick="event.preventDefault(); document.getElementById('categoryForm{{ $sub_category->id }}').submit();">
+                                            onclick="event.preventDefault(); document.getElementById('subCategoryForm{{ $sub_category->id }}').submit();">
                                             <i class="fas fa-trash"></i>
                                         </a>
-                                        <form method="POST" action="{{ route('category.destroy', $sub_category->id) }}"
-                                            id="categoryForm{{ $sub_category->id }}">
+                                        <form method="POST" action="{{ route('sub-category.destroy', $sub_category->id) }}"
+                                            id="subCategoryForm{{ $sub_category->id }}">
                                             @csrf
                                             @method('DELETE')
                                         </form>

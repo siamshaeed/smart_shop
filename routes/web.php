@@ -27,3 +27,10 @@ Route::get('/update-category-status/{id}', [
     'as'         => 'category.update-status',
     'middleware' => ['auth:sanctum', 'verified']
 ]);
+
+// Sub categoty status - publishe or unpublish
+Route::get('/update-sub-category-status/{id}', [
+    'uses'       => 'App\Http\Controllers\SubCategoryController@updateStatus',
+    'as'         => 'sub-category.update-status',
+    'middleware' => ['auth:sanctum', 'verified']
+]);

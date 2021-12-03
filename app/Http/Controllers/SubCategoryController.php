@@ -36,7 +36,13 @@ class SubCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        SubCategory::newSubCategory($request);
+        return redirect()->back()->with('message', 'Sub Category Create Successfully');
+    }
+
+    public function updateStatus($id)   // category status
+    {
+        return redirect()->back()->with('message', SubCategory::updateSubCategoryStatus($id));
     }
 
     /**
@@ -58,7 +64,7 @@ class SubCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('sub-category.edit', ['sub_categry' => SubCategory::find($id),'sub_categries' => SubCategory::all(), 'categories' => Category::Where('status', 1)->get()]);
     }
 
     /**
@@ -70,7 +76,8 @@ class SubCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        SubCategory::updateSubCategory($request, $id);
+        return redirect('sub-category')->with('message', 'Sub Category info Update Successfully');
     }
 
     /**
