@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller
 {
+    public $subCategory;
     /**
      * Display a listing of the resource.
      *
@@ -88,6 +89,13 @@ class SubCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->subCategory = SubCategory::find($id);
+        if (file_exists($this->subCategory->image)) {
+            if ($this->subCategory != 'dummy.png') {
+                unlink($this->subCategory->image);
+            }
+        }
+        $this->subCategory->delete();
+        return redirect('sub-category')->with('message', 'Sub Category info Delete Successfully');
     }
 }
