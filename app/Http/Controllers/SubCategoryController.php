@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller
@@ -13,7 +15,7 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        return view('sub-category.manage'); 
+        return view('sub-category.manage', ['sub_categries' => SubCategory::all(), 'categories' => Category::Where('status', 1)->get()]);
     }
 
     /**
