@@ -41,7 +41,8 @@ class SubCategoryController extends Controller
         return redirect()->back()->with('message', 'Sub Category Create Successfully');
     }
 
-    public function updateStatus($id)   // category status
+    //For sub Category status - published or unpublished
+    public function updateStatus($id)
     {
         return redirect()->back()->with('message', SubCategory::updateSubCategoryStatus($id));
     }
@@ -65,7 +66,7 @@ class SubCategoryController extends Controller
      */
     public function edit($id)
     {
-        return view('sub-category.edit', ['sub_categry' => SubCategory::find($id),'sub_categries' => SubCategory::all(), 'categories' => Category::Where('status', 1)->get()]);
+        return view('sub-category.edit', ['sub_categry' => SubCategory::find($id), 'sub_categries' => SubCategory::all(), 'categories' => Category::Where('status', 1)->get()]);
     }
 
     /**

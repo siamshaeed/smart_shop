@@ -15,6 +15,7 @@ class SubCategory extends Model
     public static $image;
     public static $imagURL;
 
+    // image
     public static function getImageURL($request, $subCategory = null)
     {
         if (self::$image = $request->file('image')) {
@@ -60,6 +61,7 @@ class SubCategory extends Model
         self::saveBasicInfo(self::$subCategory, $request, self::getImageURL($request, self::$subCategory));
     }
 
+    // method for data save
     public static function saveBasicInfo($subCategory, $request, $imagURL)
     {
         $subCategory->category_id = $request->category_id;
@@ -70,6 +72,7 @@ class SubCategory extends Model
         $subCategory->save();
     }
 
+    // relation for category name
     public function category(){
         return $this->belongsTo('App\Models\Category');
     }

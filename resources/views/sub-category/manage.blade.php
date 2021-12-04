@@ -5,7 +5,6 @@
 @endsection
 
 @section('body')
-
     {{-- For Message Show --}}
     @if ($message = Session::get('message'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -27,15 +26,16 @@
                             <label class="col-sm-2 col-form-label">Category name</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="category_id">
-                                    <option value="" disabled selected >--- Select Category ---</option>
+                                    <option value="" disabled selected>--- Select Category ---</option>
                                     @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}"> {{ $category->name }} </option>
+                                        <option value="{{ $category->id }}"> {{ $category->name }} </option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
-                            <label for="horizontal-firstname-input" class="col-sm-2 col-form-label">Sub Category name</label>
+                            <label for="horizontal-firstname-input" class="col-sm-2 col-form-label">Sub Category
+                                name</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="name" id="horizontal-firstname-input">
                             </div>
@@ -80,7 +80,7 @@
             </div>
         </div>
     </div>
-    {{-- Data Table --}}
+    {{-- Data Table for show data --}}
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -123,7 +123,8 @@
                                             onclick="event.preventDefault(); document.getElementById('subCategoryForm{{ $sub_category->id }}').submit();">
                                             <i class="fas fa-trash"></i>
                                         </a>
-                                        <form method="POST" action="{{ route('sub-category.destroy', $sub_category->id) }}"
+                                        <form method="POST"
+                                            action="{{ route('sub-category.destroy', $sub_category->id) }}"
                                             id="subCategoryForm{{ $sub_category->id }}">
                                             @csrf
                                             @method('DELETE')
@@ -135,7 +136,6 @@
                     </table>
                 </div>
             </div>
-        </div> <!-- end col -->
-    </div> <!-- end row -->
-    <!-- End Data Table-->
+        </div>
+    </div>
 @endsection
