@@ -32,3 +32,5 @@ Route::get('/update-sub-category-status/{id}', [
     'as'         => 'sub-category.update-status',
     'middleware' => ['auth:sanctum', 'verified']
 ]);
+
+//
