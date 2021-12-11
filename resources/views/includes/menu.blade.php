@@ -31,6 +31,7 @@
                         <i class="bx bx-store"></i>
                         <span>Product Setting</span>
                     </a>
+                    {{-- Left Menu --}}
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('category.index')}}">Manage Category</a></li>
                         <li><a href="{{route('sub-category.index')}}">Manage Sub Category</a></li>
