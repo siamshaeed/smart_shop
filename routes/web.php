@@ -24,11 +24,21 @@ Route::get('/update-category-status/{id}', [
     'middleware' => ['auth:sanctum', 'verified']
 ]);
 
-// // Sub-category - resource controller
+// Sub-category - resource controller
 Route::resource('/sub-category', App\Http\Controllers\SubCategoryController::class);
-// Sub categoty status - publishe or unpublish
+// Sub-categoty status - publishe or unpublish
 Route::get('/update-sub-category-status/{id}', [
     'uses'       => 'App\Http\Controllers\SubCategoryController@updateStatus',
     'as'         => 'sub-category.update-status',
     'middleware' => ['auth:sanctum', 'verified']
 ]);
+
+// Brand - resource controller
+Route::resource('/brand', App\Http\Controllers\BrandController::class);
+// Brand status - publishe or unpublish
+Route::get('/update-brand-status/{id}', [
+    'uses'       => 'App\Http\Controllers\BrandController@updateStatus',
+    'as'         => 'brand.update-status',
+    'middleware' => ['auth:sanctum', 'verified']
+]);
+

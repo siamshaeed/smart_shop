@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
+    public $brand;
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +15,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+        return view('brand.manage', ['brands' => Brand::all()]);
     }
 
     /**
@@ -34,9 +36,14 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Brand::newBrand($request);
+        return redirect()->back()->with('message', 'Brand Create Successfully');
     }
 
+    public function updateStatus($id)   // category status
+    {
+        return redirect()->back()->with('message', Brand::updateBrandStatus($id));
+    }
     /**
      * Display the specified resource.
      *
@@ -56,7 +63,7 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('Brand.edit', ['brand' => Brand::find($id), 'brands' => Brand::all()]);
     }
 
     /**
@@ -68,7 +75,8 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Brand::updateBrand($request, $id);
+        return redirect('brand')->with('message', 'Brand info Update Successfully');
     }
 
     /**
@@ -79,6 +87,13 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->brand = Brand::find($id);
+        if (file_exists($this->brand->image)) {
+            if ($this->brand != 'dummy.png') {
+                unlink($this->brand->image);
+            }
+        }
+        $this->brand->delete();
+        return redirect('brand')->with('message', 'Brand info Delete Successfully');
     }
 }
