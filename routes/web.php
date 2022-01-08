@@ -42,3 +42,11 @@ Route::get('/update-brand-status/{id}', [
     'middleware' => ['auth:sanctum', 'verified']
 ]);
 
+// Color - resource controller
+Route::resource('/color', App\Http\Controllers\ColorController::class);
+// Color status - publishe or unpublish
+Route::get('/update-color-status/{id}', [
+    'uses'       => 'App\Http\Controllers\ColorController@updateStatus',
+    'as'         => 'color.update-status',
+    'middleware' => ['auth:sanctum', 'verified']
+]);
