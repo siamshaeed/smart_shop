@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('title')
-    Manage Brand
+    Manage Color
 @endsection
 
 @section('body')
@@ -20,27 +20,25 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-4">Create New Brand</h4>
-                    <form action="{{ route('brand.store') }}" method="POST" enctype="multipart/form-data">
+                    <h4 class="card-title mb-4">Create New Color</h4>
+                    <form action="{{ route('color.store') }}" method="POST">
                         @csrf
                         <div class="form-group row mb-4">
-                            <label for="horizontal-firstname-input" class="col-sm-2 col-form-label">Brand name</label>
+                            <label for="horizontal-firstname-input" class="col-sm-2 col-form-label">Color name</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="name" id="horizontal-firstname-input">
                             </div>
                         </div>
                         <div class="form-group row mb-4">
-                            <label for="horizontal-firstname-input1" class="col-sm-2 col-form-label">Brand
-                                Description</label>
+                            <label for="horizontal-email-input2" class="col-sm-2 col-form-label">Color Code</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" name="description"
-                                    id="horizontal-firstname-input1"></textarea>
+                                <input type="text" class="form-control" name="code" id="horizontal-email-input2">
                             </div>
                         </div>
                         <div class="form-group row mb-4">
-                            <label for="horizontal-email-input2" class="col-sm-2 col-form-label">Brand Image</label>
+                            <label for="horizontal-firstname-input1" class="col-sm-2 col-form-label">Color Description</label>
                             <div class="col-sm-10">
-                                <input type="file" class="form-control-file" name="image" id="horizontal-email-input2">
+                                <textarea class="form-control" name="description" id="horizontal-firstname-input1"></textarea>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
@@ -60,7 +58,7 @@
                         <div class="form-group row justify-content-end">
                             <div class="col-sm-10">
                                 <div>
-                                    <button type="submit" class="btn btn-primary w-md">Create New Brand</button>
+                                    <button type="submit" class="btn btn-primary w-md">Create New Color</button>
                                 </div>
                             </div>
                         </div>
@@ -74,44 +72,44 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">All Brand Info Goes Here</h4>
+                    <h4 class="card-title">All Color Info Goes Here</h4>
                     <hr />
                     <table id="datatable" class="table table-bordered dt-responsive nowrap"
                         style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                             <tr>
                                 <th>SL NO</th>
-                                <th>Brand Name</th>
+                                <th>Color Name</th>
+                                <th>Color Code</th>
                                 <th>Description</th>
-                                <th>Image</th>
                                 <th>Status</th>
                                 <th class="text-right">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {{-- show brand info --}}
-                            @foreach ($brands as $brand)
+                            @foreach ($colors as $color)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $brand->name }}</td>
-                                    <td>{{ $brand->description }}</td>
-                                    <td><img src="{{ asset($brand->image) }}" alt="" height="40" width="60"></td>
-                                    <td>{{ $brand->status == 1 ? 'Published' : 'Unpublished' }}</td>
+                                    <td>{{ $color->name }}</td>
+                                    <td>{{ $color->code }}</td>
+                                    <td>{{ $color->description }}</td>
+                                    <td>{{ $color->status == 1 ? 'Published' : 'Unpublished' }}</td>
                                     <td class="text-right">
                                         {{-- brand status --}}
-                                        <a href="{{ route('brand.update-status', ['id' => $brand->id]) }}"
-                                            class="btn btn-sm {{ $brand->status == 1 ? 'btn-info' : 'btn-warning' }}"><i
+                                        <a href="{{ route('color.update-status', ['id' => $color->id]) }}"
+                                            class="btn btn-sm {{ $color->status == 1 ? 'btn-info' : 'btn-warning' }}"><i
                                                 class="fas fa-arrow-circle-up"></i></a>
                                         {{-- brand edit --}}
-                                        <a href="{{ route('brand.edit', $brand->id) }}" class="btn btn-success btn-sm"><i
+                                        <a href="{{ route('color.edit', $color->id) }}" class="btn btn-success btn-sm"><i
                                                 class="fas fa-edit"></i></a>
                                         {{-- brand delete --}}
                                         <a href="" class="btn btn-danger btn-sm"
-                                            onclick="event.preventDefault(); document.getElementById('categoryForm{{ $brand->id }}').submit();">
+                                            onclick="event.preventDefault(); document.getElementById('colorForm{{ $color->id }}').submit();">
                                             <i class="fas fa-trash"></i>
                                         </a>
-                                        <form method="POST" action="{{ route('brand.destroy', $brand->id) }}"
-                                            id="categoryForm{{ $brand->id }}">
+                                        <form method="POST" action="{{ route('color.destroy', $color->id) }}"
+                                            id="colorForm{{ $color->id }}">
                                             @csrf
                                             @method('DELETE')
                                         </form>

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Color;
 use Illuminate\Http\Request;
 
 class ColorController extends Controller
 {
+    public $color;
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +15,7 @@ class ColorController extends Controller
      */
     public function index()
     {
-        //
+        return view('color.manage', ['colors' => Color::all()]);
     }
 
     /**
@@ -34,7 +36,13 @@ class ColorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Color::newColor($request);
+        return redirect()->back()->with('message', 'Color Create Successfully');
+    }
+
+    public function updateStatus($id)   // category status
+    {
+        return redirect()->back()->with('message', Color::updateColorStatus($id));
     }
 
     /**
@@ -56,7 +64,8 @@ class ColorController extends Controller
      */
     public function edit($id)
     {
-        //
+        // dd(Color::find($id));
+        return view('color.edit', ['color' => Color::find($id), 'colors' => Color::all()]);
     }
 
     /**
@@ -68,7 +77,8 @@ class ColorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Color::updateColor($request, $id);
+        return redirect('color')->with('message', 'color info Update Successfully');
     }
 
     /**
@@ -79,6 +89,8 @@ class ColorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->color = Color::find($id);
+        $this->color->delete();
+        return redirect('color')->with('message', 'Color info Delete Successfully');
     }
 }

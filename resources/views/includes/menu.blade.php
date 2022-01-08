@@ -36,7 +36,7 @@
                         <li><a href="{{route('category.index')}}">Manage Category</a></li>
                         <li><a href="{{route('sub-category.index')}}">Manage Sub Category</a></li>
                         <li><a href="{{route('brand.index')}}">Manage Brand</a></li>
-                        <li><a href="ecommerce-orders.html">Manage Color</a></li>
+                        <li><a href="{{route('color.index')}}">Manage Color</a></li>
                         <li><a href="ecommerce-orders.html">Manage Unit</a></li>
                     </ul>
                 </li>
