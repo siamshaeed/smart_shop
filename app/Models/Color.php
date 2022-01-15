@@ -28,6 +28,7 @@ class Color extends Model
             self::$message = 'Color info published successfully';
         }
         self::$color->save();
+        return self::$message;
     }
 
     public static function updateColor($request, $id)

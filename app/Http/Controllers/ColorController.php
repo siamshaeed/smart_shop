@@ -40,7 +40,7 @@ class ColorController extends Controller
         return redirect()->back()->with('message', 'Color Create Successfully');
     }
 
-    public function updateStatus($id)   // category status
+    public function updateStatus($id)   // publication status chenge
     {
         return redirect()->back()->with('message', Color::updateColorStatus($id));
     }
