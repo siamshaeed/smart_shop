@@ -1,2 +1,2 @@
 # smart_shop
-A complete E-commerce websit. Here Backend Laravel and frontend Vue.js
+A complete E-commerce website. Here Backend Laravel and frontend Vue.js
