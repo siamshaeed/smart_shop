@@ -37,7 +37,7 @@
                         <li><a href="{{route('sub-category.index')}}">Manage Sub Category</a></li>
                         <li><a href="{{route('brand.index')}}">Manage Brand</a></li>
                         <li><a href="{{route('color.index')}}">Manage Color</a></li>
-                        <li><a href="#">Manage Size</a></li>
+                        <li><a href="{{route('size.index')}}">Manage Size</a></li>
                         <li><a href="#">Manage Unit</a></li>
                     </ul>
                 </li>

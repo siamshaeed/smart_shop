@@ -50,3 +50,12 @@ Route::get('/update-color-status/{id}', [
     'as'         => 'color.update-status',
     'middleware' => ['auth:sanctum', 'verified']
 ]);
+
+// Size - resource controller.
+Route::resource('/size', App\Http\Controllers\SizeController::class);
+// Size status - publishe or unpublish.
+Route::get('/update-size-status/{id}', [
+    'uses'       => 'App\Http\Controllers\SizeController@updateStatus',
+    'as'         => 'size.update-status',
+    'middleware' => ['auth:sanctum', 'verified']
+]);

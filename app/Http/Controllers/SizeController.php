@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Size;
 use Illuminate\Http\Request;
 
 class SizeController extends Controller
 {
+    public $size;
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +15,7 @@ class SizeController extends Controller
      */
     public function index()
     {
-        //
+        return view('size.manage', ['sizes' => Size::all()]);
     }
 
     /**
@@ -34,7 +36,13 @@ class SizeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Size::newSize($request);
+        return redirect()->back()->with('message', 'Size Create Successfully');
+    }
+
+    public function updateStatus($id)   // publication status chenge
+    {
+        return redirect()->back()->with('message', Size::updateSizeStatus($id));
     }
 
     /**
@@ -56,7 +64,7 @@ class SizeController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('size.edit', ['size' => Size::find($id), 'sizes' => Size::all()]);
     }
 
     /**
@@ -68,7 +76,8 @@ class SizeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Size::updateSize($request, $id);
+        return redirect('size')->with('message', 'Size info Update Successfully');
     }
 
     /**
@@ -79,6 +88,8 @@ class SizeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->size = Size::find($id);
+        $this->size->delete();
+        return redirect('size')->with('message', 'Size info Delete Successfully');
     }
 }
